@@ -1,0 +1,48 @@
+@import "commonnew";
+@import "mainnew";
+
+// https://www.mozilla.org/en-US/styleguide/products/firefox-os/color/
+.navbar-brand {
+  font-size: 16px;
+}
+.navbar-default .navbar-nav >li > a {
+  font-size: 14px;
+  padding: 14px 8px !important;
+}
+
+// .stats-wrapper .panel {
+//   border:1px solid #ddd !important;
+// }
+
+@media (min-width: 1200px) and (max-width:1320px) {
+  uib-accordion .panel-group {
+    margin-bottom: 60px;
+  }
+  h4{
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width:1310px) {
+  .search-li {
+    clear: both;
+  }
+  .static-stats-wrapper{
+    margin-top: 40px;
+    z-index: 1;
+    float: none;
+  }
+  uib-accordion-group .panel-body{
+    padding-bottom: 20px;
+  }
+  .collapse.in .panel-body {
+    padding: 15px 5px;
+  }
+}
+
+@media (min-width: 765px) and (max-width:899px) {
+  .navbar-default .navbar-nav >li > a {
+    font-size: 11.5px;
+    padding: 14px 7px !important;
+  }
+}

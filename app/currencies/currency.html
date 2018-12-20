@@ -1,0 +1,130 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center" >
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        <span ng-bind-template=" Currency Details "></span>
+    </h3>
+
+</div>
+
+<div class="modal-body" ng-init="loadDetails()">
+    <div class="container-fluid">
+
+        <br>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Name </div>
+          <h5> <div class="dont-break-out">  {{currencyDetails.name}} </div> </h5>
+        </div>
+
+        <div class="col-md-8">
+          <div class="ucsb"> Description </div>
+          <h5> <div class="dont-break-out">  {{currencyDetails.description}} </div> </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Issuer </div>
+
+          <h5> </strong> <div compile="currencyDetails.accountRS|searchTerm"> </div> </strong> </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Ticker </div>
+          <h5>  {{currencyDetails.code}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Currency Id </div>
+          <h5>  {{currencyDetails.currency}}  </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Creation Block Height </div>
+          <h5>  {{currencyDetails.creationHeight}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Issuance Block Height </div>
+          <h5>  {{currencyDetails.issuanceHeight}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Decimals </div>
+          <h5>  {{currencyDetails.decimals}}  </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Initial Supply </div>
+          <h5>  {{currencyDetails.initialSupply | quantityToShare:currencyDetails.decimals|numericalString}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Max. Supply </div>
+          <h5>  {{currencyDetails.maxSupply | quantityToShare:currencyDetails.decimals|numericalString}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Reserve Supply </div>
+          <h5>  {{currencyDetails.reserveSupply | quantityToShare:currencyDetails.decimals|numericalString}}  </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Current Supply </div>
+          <h5>  {{currencyDetails.currentSupply | quantityToShare:currencyDetails.decimals|numericalString}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Current Reserve U/T </div>
+          <h5>  {{currencyDetails.currentReservePerUnitTQT|quantToAmount|numericalString}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Min. Reserve U/T </div>
+          <h5>  {{currencyDetails.minReservePerUnitTQT|quantToAmount|numericalString}}  </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Total Exchanges </div>
+          <h5>  {{currencyDetails.numberOfExchanges}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Total Transfers </div>
+          <h5>  {{currencyDetails.numberOfTransfers}}  </h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ucsb"> Properties </div>
+
+          <h5>
+            <ul>
+              <li ng-repeat="spec in currencyDetails.types"> <small> {{spec}} </small> </li>
+            </ul>
+          </h5>
+
+        </div>
+
+</div>
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()" autofocus>  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

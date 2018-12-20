@@ -1,0 +1,21 @@
+<div class="footer container-fluid">
+	<div class="col-md-7">
+		<span class="navbar-brand pull-left">
+			<span class="label label-xs">
+				<span class="footerTex">Infinity BlockExplorer </span> <br>
+				 This website is owned by the <span style="color:#ea555d;"> XEL community </span> and managed by the <span style="color:#ea555d;"> XEL Foundation. </span>
+			</span>
+		</span>
+	</div>
+
+	<div class="col-md-5 pull-right" ng-controller="FooterController" ng-init="init()">
+		<cc-auto-refresh-fn refresh-fn="init()" refresh-interval="options.AUTO_PAGE_REFRESH_INTERVAL"></cc-auto-refresh-fn>
+
+		<span class="navbar-brand pull-right">
+			<span class="footerTex label label-xs">Date : {{AssignedDate.now() | date:'yyyy-MM-dd HH:mm:ss'}} <span style="color:#ea555d;"> | <span style="color:#ea555d;"> </span>
+			<span class="footerTex label label-xs">Height : {{currentHeight}}  </span><br>
+			<span class="label label-xs">                           kkkkkkk : {{connectedURL}} <span style="color:#ea555d;"> | </span> </span>
+			<span class="label label-xs">Version : {{options.VERSION}}</span>
+        </span>
+	</div>
+</div>

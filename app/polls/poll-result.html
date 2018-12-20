@@ -1,0 +1,94 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 1024px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;"> Poll Results </h3>
+
+</div>
+
+<div class="modal-body" ng-init="loadPollResults()">
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            <br>
+
+            <div class="col-md-6 text-center">
+
+                <nvd3 options="options" data="pollData"></nvd3>
+
+            </div>
+
+            <div class="col-md-6 text-center">
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Options</th>
+                        <th>Percentage</th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="result in pollResultTableDate">
+                        <td>{{result.optionName}}</td>
+                        <td>{{result.percentage | numberString:2}}%</td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+            <div class="col-md-12"> <hr/> </div>
+
+            <div class="col-md-12 text-center">
+
+              <h3>{{pollName}}</h3>
+              {{pollDescription}}
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()"><i class="fa fa-times"
+                                                                                    aria-hidden="true"></i></button>
+</div>
+
+<!--
+
+<style>
+  .modal .modal-dialog { max-width: 1024px; }
+</style>
+
+<div class="modal-header modal-default text-center" ng-init="loadDetails()">
+
+    <div class="pull-left"><img src="images/logo_inv.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;"> Poll Results  </h3>
+
+</div>
+
+
+
+<div class="modal-body" ng-init="loadPollResults()">
+
+    <div class="text-center">
+        <h3>{{pollName}}</h3>{{pollDescription}}
+    </div>
+    <nvd3 options="options" data="pollData"></nvd3>
+
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div> -->

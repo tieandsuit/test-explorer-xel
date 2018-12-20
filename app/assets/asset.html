@@ -1,0 +1,88 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+
+<div class="modal-header modal-default text-center" >
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        <span ng-bind-template=" Asset Details "></span>
+    </h3>
+
+</div>
+
+<div class="modal-body" ng-init="loadDetails()()">
+    <div class="container-fluid">
+
+        <br>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Name </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.name}} </div> </h5>
+        </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Description </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.description}} </div> </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Issuer </div>
+
+          <h5> </strong> <div compile="assetDetails.accountRS|searchTerm"> </div> </strong> </h5>
+        </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Asset Id </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.asset}} </div> </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Inital Supply </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.initialQuantityQNT| quantityToShare:assetDetails.decimals|numericalString}} </div> </h5>
+        </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Current Supply </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.quantityQNT| quantityToShare:assetDetails.decimals|numericalString}} </div> </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Decimals </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.decimals}} </div> </h5>
+        </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Shareholders </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.numberOfAccounts}} </div> </h5>
+        </div>
+
+        <div class="col-md-12"> <hr/> </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Trades </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.numberOfTrades}} </div> </h5>
+        </div>
+
+        <div class="col-md-6">
+          <div class="ucsb"> Transfers </div>
+          <h5> <div class="dont-break-out">  {{assetDetails.numberOfTransfers}} </div> </h5>
+        </div>
+
+</div>
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()" autofocus>  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

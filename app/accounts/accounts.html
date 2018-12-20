@@ -1,0 +1,27 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Accounts</strong>
+
+            <div class="pull-right">
+
+                <cc-auto-refresh-fn refresh-fn="reloadAccounts()" refresh-interval="options.AUTO_PAGE_REFRESH_INTERVAL"></cc-auto-refresh-fn>
+
+                <button class="btn btn-default btn-xs pull-right" ng-click="reloadAccounts()">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+                
+            </div>
+
+        </div>
+        <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstanceCallback" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Account Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

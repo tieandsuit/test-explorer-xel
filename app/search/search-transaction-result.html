@@ -1,0 +1,272 @@
+
+
+<style>
+
+  .modal-dialog {
+      position: relative;
+      display: table; //This is important
+      overflow-y: auto;
+      overflow-x: auto;
+      width: auto;
+
+      min-width: 768px;
+  }
+
+</style>
+
+
+
+<div class="modal-header modal-default text-center" >
+
+  <div class="pull-left">  <img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">  </div>
+
+  <h3 class="modal-titleText" style="margin-right:70px;"> Transaction Details </h3>
+
+  <button type="button" class="modal-close btn btn-default pull-left" ng-click="cancel()" focusInput> <i class="fa fa-times" aria-hidden="true" ></i> </button>
+
+</div>
+<div class="modal-body block-detailsbody"  ng-init="showResult()">
+
+  <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+              <div class="ucsb"> Transaction ID </div>
+              <h5> </strong> {{transaction.transaction}} </strong> </h5>
+            </div>
+            
+          </div>
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+               <div class="ucsb"> Block ID </div>
+            <h5> </strong>  {{transaction.block}} </strong> </h5>
+            </div>
+            
+          </div>
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+                <div class="ucsb"> Transaction Time </div>
+                <h5> </strong>  {{transaction.blockTimestamp|timestamp}} </strong> </h5>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+               <div class="ucsb"> Block Height </div>
+               <h5> </strong> {{transaction.height}} </strong> </h5>
+            </div>
+            
+          </div>
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+               <div class="ucsb"> Confirmations </div>
+               <h5> <div ng-bind-html="transaction.confirmations|transactionConf"> </div> </h5>
+            </div>
+            
+          </div>
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+              <div class="ucsb"> Transaction Type </div>
+              <h5> </strong> {{transaction.type|transactionTextSubType:transaction.subtype}} </strong> </h5>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="row">
+          
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+              <div class="ucsb"> Token </div>
+              <h5> </strong> {{transaction.amountTQT|amountTQT}} </strong> <small> XEL </small> </h5>
+            </div>
+            
+          </div>
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+              <div class="ucsb"> Transaction Fee </div>
+              <h5> </strong> {{transaction.feeTQT|amountTQT}} </strong> <small> XEL </small> </h5>
+            </div>  
+          </div>
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+               <div class="ucsb"> Message </div>
+               <h5 compile="transaction|hasMessage"></h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+              <div class="ucsb"> Sender </div>
+              <h5> </strong> <div compile="transaction.senderRS|searchTerm"> </div> </strong> </h5>
+            </div>
+            
+          </div>
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">              
+              <div class="ucsb"> Recipient </div>
+              <h5> </strong> <div compile="transaction.recipientRS|searchTerm"> </div> </strong> </h5>
+            </div>
+          </div>
+
+          <div class="col-md-4 block-dtl-col">
+            <div class="block-dtl">
+              <div class="ucsb"> Controlled </div>
+               <h5 compile="transaction.phased | isEnabled"></h5>
+            </div>            
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="block-btns">
+            <button type="button" class="btn btn-default btn-md" ng-click="PubKey = !PubKey" >  Sender Public Key </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="fullHash = !fullHash">  Full Hash  </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="signatureHash = !signatureHash">  Signature Hash </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="signature = !signature">   Signature </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="attachment = !attachment">  Attachment </button>
+            <br><br>
+            <div uib-collapse="!PubKey" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{transaction.senderPublicKey}}
+
+              </div>
+            </div>
+            <div uib-collapse="!fullHash" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{transaction.fullHash}}
+
+              </div>
+            </div>
+            <div uib-collapse="!signatureHash" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{transaction.signatureHash}}
+
+              </div>
+            </div>
+            <div uib-collapse="!signature" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{transaction.signature}}
+
+              </div>
+            </div>
+            <div uib-collapse="!attachment" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+                {{transaction.attachment|JSONStringify}}
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <div class="modal-footer modal-default">
+    <button type="button" class="btn btn-default pull-left" ng-click="cancel()" focusInput> <i class="fa fa-times" aria-hidden="true" ></i> </button>
+</div> -->
+
+<!--
+
+<div class="modal-header modal-default">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h3 class="modal-title">Transaction Details</h3>
+</div>
+<div class="modal-body">
+
+
+    <table id="transaction-details-table" class="table table-striped table-bordered" ng-init="showResult()">
+        <tbody>
+        <tr>
+            <td><strong>Full Hash </strong></td>
+            <td><strong> {{transaction.fullHash}} </strong></td>
+        </tr>
+        <tr>
+            <td><strong>Signature Hash </strong></td>
+            <td> {{transaction.signatureHash}}</td>
+        </tr>
+        <tr>
+            <td><strong> Tx Type </strong></td>
+            <td>{{transaction.type|transactionTextSubType:transaction.subtype}}
+
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Amount / Fee </strong></td>
+            <td> {{transaction.amountTQT|quantToAmount|numericalString}} / {{transaction.feeTQT|quantToAmount|numericalString}}</td>
+
+        </tr>
+
+        <tr>
+            <td><strong>Confirmations</strong></td>
+            <td>
+                <div dynamic="getTransactionConf(transaction.confirmations)"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Height</strong></td>
+            <td> {{transaction.height}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Sender</strong></td>
+            <td>
+                <div compile="transaction.senderRS | searchTerm"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Recipient</strong></td>
+            <td>
+                <div dynamic="transaction.recipientRS|searchTerm"></div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Transaction Id</strong></td>
+            <td> {{transaction.transaction}}</td>
+        </tr>
+        <tr>
+            <td><strong>Block Id </strong></td>
+            <td> {{transaction.block | isEmpty}}</td>
+        </tr>
+        <tr>
+            <td><strong>Block Timestamp </strong></td>
+            <td> {{transaction.blockTimestamp|timestamp}}</td>
+        </tr>
+        <tr>
+            <td><strong>Timestamp </strong></td>
+            <td> {{transaction.timestamp|timestamp}}</td>
+        </tr>
+        <tr>
+            <td><strong>Sender Public Key </strong></td>
+            <td> {{transaction.senderPublicKey}}</td>
+        </tr>
+        <tr>
+            <td><strong>Signature </strong></td>
+            <td> {{transaction.signature}}</td>
+        </tr>
+
+    </table>
+
+
+</div>
+<div class="modal-footer modal-default">
+    <button type="button" class="btn btn-primary" ng-click="cancel()">Close</button>
+</div> -->

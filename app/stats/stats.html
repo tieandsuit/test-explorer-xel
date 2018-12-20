@@ -1,0 +1,58 @@
+<div ng-init="getStats()" class="stats-wrapper">
+  <div class="pull-right">
+    <cc-auto-refresh-fn refresh-fn="getStats()" refresh-interval="options.AUTO_PAGE_REFRESH_INTERVAL"></cc-auto-refresh-fn>
+  </div>
+  <div class="col-md-12">
+      <div class="row text-center">
+
+          <div class="col-md-2 block-explorer">
+              <div class="panel panel-default ">
+                  <div class="panel-heading"><h4 class="panel-title">Blocks</h4></div>
+                  <div class="panel-body"><label id="peers"> <h6> {{stats.numberOfBlocks}} </h6> </label></div>
+              </div>
+          </div>
+
+          <div class="col-md-2 block-explorer">
+              <div class="panel panel-default ">
+                  <div class="panel-heading"><h4 class="panel-title">Transactions</h4></div>
+                  <div class="panel-body"><label id="total-transactions"> <h6> {{stats.numberOfTransactions}} </h6> </label></div>
+              </div>
+          </div>
+
+          <div class="col-md-2 block-explorer">
+              <div class="panel panel-default ">
+                  <div class="panel-heading"><h4 class="panel-title">Accounts</h4></div>
+                  <div class="panel-body"><label id="accounts"> <h6> {{stats.numberOfAccounts}} </h6> </label></div>
+              </div>
+          </div>
+
+
+
+      </div>
+  </div>
+  <div class="col-md-12">
+      <div class="row text-center">
+        <div class="col-md-2 block-explorer">
+            <div class="panel panel-default ">
+                <div class="panel-heading"><h4 class="panel-title">Polls</h4></div>
+                <div class="panel-body"><label id="polls"><h6>{{stats.numberOfPolls}}</h6></label></div>
+            </div>
+        </div>
+        <div class="col-md-2 block-explorer">
+            <div class="panel panel-default ">
+                <div class="panel-heading"><h4 class="panel-title">Votes</h4></div>
+                <div class="panel-body"><label id="votes"><h6>{{stats.numberOfVotes}}</h6></label></div>
+            </div>
+        </div>
+
+        <div class="col-md-2 block-explorer">
+            <div class="panel panel-default ">
+                <div class="panel-heading"><h4 class="panel-title">Currency Transfers</h4></div>
+
+                <div class="panel-body"><label id="currency-transfers"><h6>{{stats.numberOfCurrencyTransfers}}</h6></label></div>
+
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

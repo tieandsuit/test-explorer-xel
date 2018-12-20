@@ -1,0 +1,43 @@
+
+
+<div class="modal-header modal-default text-center" >
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Asset Trades
+    </h3>
+
+</div>
+
+<div class="modal-body">
+
+  <div class="modal-body">
+    <div class="container-fluid">
+
+    <table datatable="" dt-options="dtOptions"
+           dt-columns="dtColumns" dt-instance="dtInstanceCallback"
+           class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Bid Order</th>
+            <th>Seller RS</th>
+            <th>Ask Order</th>
+            <th>Buyer RS</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Timestamp</th>
+        </tr>
+        </thead>
+    </table>
+
+  </div>
+  </div>
+
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()" autofocus>  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

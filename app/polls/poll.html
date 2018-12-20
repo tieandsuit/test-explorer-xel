@@ -1,0 +1,111 @@
+<style>
+  .modal .modal-dialog { max-width: 768px; }
+</style>
+
+<div class="modal-header modal-default text-center" ng-init="loadDetails()">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;"> Poll Details  </h3>
+
+</div>
+
+<div class="modal-body">
+
+  <div class="container-fluid">
+      <div class="row-fluid">
+              <div class="col-md-12">
+
+                <br>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Name </div>
+                  <h5> <div class="dont-break-out">  {{poll.name}} </div>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Description </div>
+                  <h5> <div class="dont-break-out">  {{poll.description}} </div>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Options </div>
+
+                  <h5>
+                    <ul>
+                      <li ng-repeat="options in poll.options"> <small> {{options}} </small> </li>
+                    </ul>
+                  </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Poll ID </div>
+                  <h5> </strong> {{poll.poll}} </strong>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Voting Model </div>
+                  <h5> </strong> {{ poll.votingModel | votingModel }} </strong>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Finished </div>
+                  <h5>  <div compile='poll.finished | isEnabled'   ></div>   </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Issuer </div>
+
+                  <h5> </strong> <div compile="poll.accountRS|searchTerm"> </div> </strong> </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Block Height Finished </div>
+                  <h5> </strong> {{poll.finishHeight}} </strong>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Date Created </div>
+                  <h5>  </strong>  <div compile='poll.timestamp | timestamp'   ></div>  </strong>  </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Option Model </div>
+                  <h5> </strong> {{poll.minNumberOfOptions}} from {{poll.maxNumberOfOptions}} </strong>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Min. Balance Model </div>
+                  <h5> </strong> {{poll.minBalanceModel | votingModel }} </strong>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb"> Min. Balance  </div>
+                  <h5> </strong> {{poll.minBalance | amountTQT }} </strong> <small> XEL </small> </h5>
+                </div>
+
+              <br>
+
+      </div>
+  </div>
+</div>
+
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

@@ -1,0 +1,83 @@
+
+<div class="col-md-12 static-stats-wrapper" ng-init="getStats()" ng-controller="StatsCtrl">
+
+    <cc-auto-refresh-fn
+            refresh-fn="getStats()"
+            refresh-interval="options.AUTO_PAGE_REFRESH_INTERVAL"
+    >
+    </cc-auto-refresh-fn>
+
+    <div class="row text-center block-blocks" style="margin:0 -5px 0 -5px;">
+
+      <div class="col-lg-2 col-md-4 col-sm-4 block-explorer">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+              <uib-accordion-heading>
+                <span class="block-icon icon-Block_Time"></span><p> Block Time </p>
+              </uib-accordion-heading>
+              <p class="box-heading"> avg. 60s </p>
+            </div>
+        </uib-accordion>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-sm-4 block-explorer">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+              <uib-accordion-heading>
+                  <span class="block-icon icon-Supply_Circulating"></span><p>Supply Circulating</p>
+              </uib-accordion-heading>
+              <p class="box-heading"> {{circulatingSupply|numericalString}} <small>XEL</small> </p>
+            </div>
+        </uib-accordion>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-sm-4 block-explorer">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+              <uib-accordion-heading>
+                <span class="block-icon icon-Transactions"></span><p>Transactions</p>
+              </uib-accordion-heading>
+              <p class="box-heading"> {{stats.numberOfTransactions/stats.numberOfBlocks | amountTKN}} txs / block </p>
+            </div>
+        </uib-accordion>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-sm-4 block-explorer">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+              <uib-accordion-heading>
+                <span class="block-icon icon-Accounts"></span><p> Accounts</p>
+              </uib-accordion-heading>
+              <p class="box-heading"> {{stats.numberOfAccounts|numericalFormat}} </p>
+            </div>
+        </uib-accordion>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-sm-4 block-explorer">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+              <uib-accordion-heading>
+                 <span class="block-icon icon-Nodes"></span><p> Nodes</p>
+              </uib-accordion-heading>
+                <p class="box-heading">
+                  <a type="button" style="color: #474747; line-height:0;" class="btn explorer-link btn-infinity btn-xs"
+                  href="/peer"
+                  target="_blank"> Peer Explorer </a>
+                </p>
+            </div>
+        </uib-accordion>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-sm-4 block-explorer">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+              <uib-accordion-heading>
+                 <span class="block-icon icon-Top_Node"></span><p> Base Algo </p>
+              </uib-accordion-heading>
+              <p class="box-heading"> PoS </p>
+            </div>
+        </uib-accordion>
+      </div>
+
+    </div>
+</div>

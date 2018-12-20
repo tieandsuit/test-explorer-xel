@@ -1,0 +1,145 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 1300px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center" >
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+    <h3 class="modal-titleText" style="margin-right:70px;">
+        Block Details
+    </h3>
+    <button ng-disabled="" class="modal-close btn btn-default pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>
+<div class="modal-body block-detailsbody" ng-init="showBlockDetails()">
+  <div class="container-fluid">
+    <div class="row">
+        <br>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Block Id </div>
+            <h5> {{blockDetails.block}} </h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Previous Block Id </div>
+            <h5> {{blockDetails.previousBlock}} </h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Generator </div>
+            <h5> <div compile="blockDetails.generatorRS|searchTerm"></div></h5>
+           </div> 
+        </div>
+    </div>    
+    <div class="row">    
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Payload Length </div>
+            <h5> {{blockDetails.payloadLength}}  <small> kb. </small> </h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Base Target </div>
+            <h5> {{blockDetails.baseTarget}}</h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Cumulative Difficulty </div>
+            <h5> {{blockDetails.cumulativeDifficulty}}</h5>
+           </div> 
+        </div>
+    </div>
+    <div class="row">    
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Height</div>
+            <h5> {{blockDetails.height}} </h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Timestamp</div>
+            <h5> {{blockDetails.timestamp|timestamp}} </h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Total Fee </div>
+            <h5> {{blockDetails.totalFeeTQT | amountTQT}} <small> XEL </small> </h5>
+           </div> 
+        </div>
+    </div>
+    <div class="row">    
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Total Amount </div>
+            <h5> {{blockDetails.totalAmountTQT|amountTQT}} </small> XEL </small> </h5>
+           </div>
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> Transactions </div>
+            <h5> {{blockDetails.numberOfTransactions}} </h5>
+           </div> 
+        </div>
+        <div class="col-md-4 block-dtl-col">
+           <div class="block-dtl"> 
+            <div class="ucsb"> &nbsp;  </div>
+            <h5> &nbsp; </h5>
+           </div> 
+        </div>          
+    </div>
+    <div class="row">
+        <div class="block-btns">
+            <button type="button" class="btn btn-default btn-md" ng-click="PubKey = !PubKey" > Public Key </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="fullHash = !fullHash"> Payload  </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="signatureHash = !signatureHash">  Signature  </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="previous = !previous">   Previous Block  </button>
+            <button type="button" class="btn btn-default btn-md" ng-click="blocksig = !blocksig">   Block Signature </button>
+            <br><br>
+            <div uib-collapse="!PubKey" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+                    {{blockDetails.generatorPublicKey}}
+              </div>
+            </div>
+            <div uib-collapse="!fullHash" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+                {{blockDetails.payloadHash}}
+              </div>
+            </div>
+            <div uib-collapse="!signatureHash" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{blockDetails.generationSignature}}
+
+              </div>
+            </div>
+            <div uib-collapse="!previous" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{blockDetails.previousBlockHash}}
+
+              </div>
+            </div>
+            <div uib-collapse="!blocksig" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+              <div class="well well-lg dont-break-out">
+
+              {{blockDetails.blockSignature}}
+
+              </div>
+            </div>
+        </div>    
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal-footer block-detailsfooter modal-default">
+      <p> 30fc5f40a22a7631c7a33bf640db58e2aa0b661689ec616e1602d56a6c77f50 </p>
+</div>  -->
