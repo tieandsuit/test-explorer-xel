@@ -34,7 +34,7 @@ angular.module('baseBlockExplorer').constant('baseConfig', {
 
 angular.module('baseBlockExplorer').constant('BASE_OPTIONS', {
     'AUTO_PAGE_REFRESH_INTERVAL': 60000,
-    'VERSION': '0.0.1'
+    'VERSION': '3.1.3'
 });
 
 angular.module('baseBlockExplorer').filter('timestamp', ['$sce', 'moment', 'baseConfig', function ($sce, moment, baseConfig) {
